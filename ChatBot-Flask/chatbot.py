@@ -2,6 +2,7 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.trainers import ListTrainer
+from chatterbot.conversation import Statement
 from flask import *
 
 app = Flask(__name__)
@@ -34,17 +35,31 @@ trainer.train(training_data_for_mybot)
 trainer = ChatterBotCorpusTrainer(my_chatbot)
 trainer.train("chatterbot.corpus.english")
 
-@app.route("/")
-def home():
-    return render_template("index.html")
+# @app.route("/")
+# def home():
+#     return render_template("index.html")
 
-@app.route("/get")
-def get_bot_response():
-    user_request = request.args.get('msg')
-    # get_response() returns the responses for the user_request
-    return str(my_chatbot.get_response(user_request))
+# @app.route("/get")
+# def get_bot_response():
+#     user_request = request.args.get('msg')
+#     # get_response() returns the responses for the user_request
+#     return str(my_chatbot.get_response(user_request))
 
-if __name__ == "__main__":
-    app.run(debug = True)
+# if __name__ == "__main__":
+#     app.run(debug = True)
 
+
+print('The bot is started. Please type some text!')
+# The following loop will execute each time the user enters input
+while True:
+    try:
+
+        input_statement = input()
+        
+        response = my_chatbot.get_response(input_statement)
+        print(response)
+
+    # Press ctrl-c or ctrl-d on the keyboard to exit
+    except (KeyboardInterrupt, EOFError, SystemExit):
+        break
     
