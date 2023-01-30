@@ -1,0 +1,41 @@
+{
+    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
+    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Chatbot with Flask (don't start url)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/ChatBot-Flask/chatbot.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceRoot}/ChatBot-Flask"
+        },
+        {
+            "name": "Debug Flask (with opening the url)",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "program": "${workspaceRoot}/ChatBot-Flask/chatbot.py",
+            "cwd": "${workspaceRoot}/ChatBot-Flask",
+            "env": {
+                "FLASK_APP": "${workspaceRoot}/ChatBot-Flask/chatbot.py",
+                "FLASK_ENV": "development",
+                "FLASK_DEBUG": "0"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": ".*(https?:\\/\\/\\S+:[0-9]+\\/?).*",
+                "uriFormat": "%s"
+            }
+        }
+    ]
+}
