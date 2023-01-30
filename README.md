@@ -2,7 +2,7 @@
 
 # Hints for the usage with Visual Studio Code
 ## Python version
-Install Python 3.7.9
+Install Python 3.9.2
 
 ## Create a virtual environment
 - you need the python extension "Python" (or "Python Extension Pack")
@@ -12,7 +12,13 @@ Install Python 3.7.9
 - check, that the terminal (command prompt) uses the right python version
 
         python --version
-        Python 3.7.9
+        Python 3.9.2
+
+- get spacy-fixed version of chatterbot
+
+        cd .venv
+        git clone https://github.com/feignbird/ChatterBot-spacy_fixed.git
+        pip install ./ChatterBot-spacy_fixed
 
 ### PowerShell restriction
 If you have problems with the powershell-scripts in Visual Studio Code:
@@ -22,6 +28,9 @@ If you have problems with the powershell-scripts in Visual Studio Code:
 type in the terminal
     cd ChatBot-Flask
     pip install -r requirements.txt
+    pip uninstall PyYAML
+    pip install PyYAML==5.3.1
+    python -m spacy download en_core_web_sm
 
 ## Start debuging
 Use the defined launch command.
