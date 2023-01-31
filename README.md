@@ -19,6 +19,7 @@ Install Python 3.9.2
         cd .venv
         git clone https://github.com/feignbird/ChatterBot-spacy_fixed.git
         pip install ./ChatterBot-spacy_fixed
+        cd ..
 
 ### PowerShell restriction
 If you have problems with the powershell-scripts in Visual Studio Code:
@@ -28,6 +29,7 @@ If you have problems with the powershell-scripts in Visual Studio Code:
 type in the terminal
     cd ChatBot-Flask
     pip install -r requirements.txt
+        (there is an error, that version are incompatible. Therefore...)
     pip uninstall PyYAML
     pip install PyYAML==5.3.1
     python -m spacy download en_core_web_sm
