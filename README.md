@@ -19,11 +19,14 @@ Jetzt würden wir das neueste Python installiert haben (Python3.10)
 Wir installieren Python 3.7.2 mit `conda install python 3.7.2`
 7. Mit `conda create --name chatbot` können wir eine Venv mit den globalen Python Binaries erstellen. Wenn man PythonX braucht einfach `conda create -n pythonx_venv python=X` oder nachträglich `conda install python=X` (hat nicht funktioniert)
 Die venvs sind unter `~/miniconda3/envs` zu sehen, man kann sie mit `conda env list` alle anzeigen.
-8. bashrc erweitern mit `echo ". /miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc`
+8. bashrc erweitern mit `echo ". /miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc`. Danach relogin machen um es zu aktivieren.
 9.  Um sie zu aktivieren und Packages nach zu installieren: `conda activate chatbot` (Beim ersten Mal kommt noch so eine Konfigurationssache, Ja drücken und relogin). Mit `conda deactivate` kann man die venv verlassen.
 10. Packages können mit conda selbst bzw. pip selbst wie gewohnt installiert werden.
 Ich würde conda nehmen da macht man nichts falsch, wenn man verschiedenen Python Versionen installiert hat.
 `conda install <package>`
+11. Wir verwenden die requirements.txt zum Installieren der Pakete
+        conda activate chatbot
+        cd /chatbot/ChatBot-Flask/
 
 # Hints for the usage with Visual Studio Code
 ## Python version

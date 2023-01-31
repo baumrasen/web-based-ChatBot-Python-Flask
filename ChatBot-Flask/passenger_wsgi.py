@@ -1,20 +1,39 @@
+# passenger_wsgi.py
+# Das Ändern:
+NAME_MEINER_VENV = "chatbot"
+PYTHON_VERSION = "python3.7"
+MINICONDA_ROOT = "/miniconda3"
+
 import sys, os
-cwd = os.getcwd()
-sys.path.append(cwd)
+"""
+Diese Start Datei wird in dem von Netcup bestimmten Python Interpreter geladen.
+mit os.execl("python","python","this_file") wird die Datei im definierten Python Interpreter neu geladen.
+Alle Packages die der Python Interpreter zur Verfügung hat können importiert werden.
+Code leicht geändert von: https://help.dreamhost.com/hc/en-us/articles/215769548-Passenger-and-Python-WSGI
+"""
+INTERP = os.environ["HOME"]+MINICONDA_ROOT+"/envs/"+NAME_MEINER_VENV+"/bin/"+PYTHON_VERSION
+# INTERP = os.environ["HOME"]+"/miniconda3/envs/testenv/bin/python3.9"
+"""
+os.environ["HOME"] ist wie ~/
+wenn Passenger diese Datei als dein Webhosting User öffnet
+befindet sich das Nutzer Verzeichnis nicht mehr unter:
+"/" sonder "/var/www/vhosts/hosting*user*.*server*.netcup.net/"
+"/miniconda3/envs/testenv/bin/python3.9" muss der Path zu den Python Binaries sein
+python -m venv testenv // funzt nicht, denn dabei wird nur ein Link zur Haupt Python Anwendung erstellt.
+lieber: conda create --name testenv // hierbei werden augenscheinlich die Python Binaries direkt in der Venv abgelegt.
+"""
 
-#project_location = cwd + '/myApp'
-#project_location = cwd
-#venv_location = cwd + '/.venv'
-site_packages = cwd + '/.venv/Lib/site-packages'
+"""
+Debugging:
+Im 1. Durchlauf sollte der original Interpreter geprinted werden.
+Im 2. Druchlauf dein INTERP
+"""
+# print(sys.path)
+# print(sys.executable)
 
-#print (project_location)
-#print (venv_location)
-#print (site_packages)
-#sys.path.insert(0, project_location)
-sys.path.insert(0, site_packages)
-
-# sys.path.insert(0,'/home/myuser/mydomain.com/env/bin')
-#sys.path.insert(0,'/home/myuser/mydomain.com/env/lib/python2.7/site-packages/django')
-#sys.path.insert(0,'/home/myuser/mydomain.com/env/lib/python2.7/site-packages')
-
-from chatbot import MyApp as application
+# INTERP is present twice so that the new Python interpreter knows the actual executable path
+if sys.executable != INTERP:
+        os.execl(INTERP, INTERP, *sys.argv)
+# Dieser Code wird erst beim finalen Interpreter ausgeführt:
+# Das Ändern:
+from chatbot import app as application
