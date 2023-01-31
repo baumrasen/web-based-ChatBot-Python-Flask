@@ -3,8 +3,8 @@ const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 
 // Icons made by Freepik from www.flaticon.com
-const BOT_IMG = "<i class='far fa-user-robot fa-3x'></i>";
-const PERSON_IMG = "<i class='fa-regular fa-user fa-3x'></i>";
+const BOT_IMG = '<span class="fa-stack fa-2x"><i class="fa-solid fa-circle fa-stack-2x fa-inverse"></i><i class="fa-solid fa-robot fa-stack-1x"></i></span>';
+const PERSON_IMG = '<span class="fa-stack fa-2x"><i class="fa-solid fa-circle fa-stack-2x fa-inverse"></i><i class="fa-solid fa-user fa-stack-1x"></i></span>';
 const BOT_NAME = "Tom";
 const PERSON_NAME = "You";
 
