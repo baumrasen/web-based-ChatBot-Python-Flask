@@ -19,4 +19,4 @@ sys.path.insert(0, site_packages2)
 #sys.path.insert(0,'/home/myuser/mydomain.com/env/lib/python2.7/site-packages/django')
 #sys.path.insert(0,'/home/myuser/mydomain.com/env/lib/python2.7/site-packages')
 
-from chatbot import MyApp as application
+from chatbot import app as application
