@@ -34,9 +34,26 @@ trainer.train(training_data_for_mybot)
 trainer = ChatterBotCorpusTrainer(my_chatbot)
 trainer.train("chatterbot.corpus.english")
 
-@app.route("/")
-def home():
-    return render_template("index.html")
+@app.route('/', defaults={'path': 'index.html'},
+           methods=['GET', 'POST'])
+@app.route('/<path:path>',
+           methods=['GET', 'POST'])
+def home(path):
+    if 'index.html' in path:
+        return render_template("index.html")
+    if 'style.css' in path:
+        return render_template("style.css")
+    if 'chatbot.js' in path:
+        return render_template("chatbot.js")
+    if 'background.png' in path:
+        return render_template("background.png")
+    if 'favicon.ico' in path:
+        return send_from_directory(os.path.join(app.root_path, 'template'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+    logging.error("Unhandled upstream query (/%s)", path)
+    abort(404)
+
 
 @app.route("/get")
 def get_bot_response():
