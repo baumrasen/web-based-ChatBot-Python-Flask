@@ -1,6 +1,6 @@
 # passenger_wsgi.py
 # Das Ändern:
-NAME_MEINER_VENV = "chatbot"
+NAME_MEINER_VENV = "chatbot39"
 PYTHON_VERSION = "python3.9"
 MINICONDA_ROOT = "/miniconda3"
 
